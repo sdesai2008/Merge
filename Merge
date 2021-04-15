@@ -1,0 +1,29 @@
+Merging Datasets
+Use pandas Merges to create a combined dataset from clean_08.csv and clean_18.csv. You should've created these data files in the previous section: Fixing Data Types Pt 3.
+
+1
+# load datasets
+import pandas as pd
+df_08 = pd.read_csv("clean_08.csv")
+df_18 = pd.read_csv("clean_18.csv")
+Create combined dataset
+# rename 2008 columns
+df_08.rename(columns=lambda x: x[:10] + "_2008", inplace=True)
+# view to check names
+df_08.head()
+model_2008	displ_2008	cyl_2008	trans_2008	drive_2008	fuel_2008	veh_class_2008	air_pollut_2008	city_mpg_2008	hwy_mpg_2008	cmb_mpg_2008	greenhouse_2008	smartway_2008
+0	ACURA MDX	3.7	6	Auto-S5	4WD	Gasoline	SUV	7.0	15.0	20.0	17.0	4	no
+1	ACURA RDX	2.3	4	Auto-S5	4WD	Gasoline	SUV	7.0	17.0	22.0	19.0	5	no
+2	ACURA RL	3.5	6	Auto-S5	4WD	Gasoline	midsize car	7.0	16.0	24.0	19.0	5	no
+3	ACURA TL	3.2	6	Auto-S5	2WD	Gasoline	midsize car	7.0	18.0	26.0	21.0	6	yes
+4	ACURA TL	3.5	6	Auto-S5	2WD	Gasoline	midsize car	7.0	17.0	26.0	20.0	6	yes
+# merge datasets
+df_combined = df_08.append(df_18)
+/opt/conda/lib/python3.6/site-packages/pandas/core/frame.py:6211: FutureWarning: Sorting because non-concatenation axis is not aligned. A future version
+of pandas will change to not sort by default.
+
+To accept the future behavior, pass 'sort=False'.
+
+To retain the current behavior and silence the warning, pass 'sort=True'.
+
+  sort=sort)
